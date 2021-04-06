@@ -17,7 +17,7 @@ What else you need: Nothing really (if you're using a 64bit linux distro), i eve
 - File `pdp11`: Its from [archlinux](https://archlinux.org/packages/community/x86_64/simh/) repo, `simh` version 3.11.1-2. Use this if your distro doesnt have the `simh` package, or if it wont work with this project. This is a x86_64 binary. [SimH Github Repo](https://github.com/simh/simh/)
 - File `rp06-0.disk` is the "disk" of the system. Thats where the system is installed. make a copy of it for backup.
 - Files `nboot.ini` and `tapei.ini` are configs for the SimH emulator.
-- Directory `www.tuhs.org/`: i literaly `wget --no-parent -r https://www.tuhs.org/Archive/Distributions/Research/Keith_Bostic_v7/`. So you have everything you need if you want to to it yourself.
+- Directory `www.tuhs.org/`: i literaly `wget --no-parent -r https://www.tuhs.org/Archive/Distributions/Research/Keith_Bostic_v7/`. So you have everything you need if you want to do it yourself.
 - Directory `docs/`:
 	- File `Installing_v7_on_SIMH__gunkies.org__.html` is all you need to follow. Is a readable form, i link to the original, and original archive.
 	- File `research-unix-7-pdp11-45.pdf` is recommended from the gunkies wiki page. If you want to customize/tailor the system, follow this pdf.
