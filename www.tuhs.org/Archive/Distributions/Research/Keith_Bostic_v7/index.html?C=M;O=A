@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /Archive/Distributions/Research/Keith_Bostic_v7</title>
+ </head>
+ <body>
+<h1>Index of /Archive/Distributions/Research/Keith_Bostic_v7</h1>
+  <table>
+   <tr><th valign="top"><img src="/icons/blank.gif" alt="[ICO]"></th><th><a href="?C=N;O=A">Name</a></th><th><a href="?C=M;O=D">Last modified</a></th><th><a href="?C=S;O=A">Size</a></th><th><a href="?C=D;O=A">Description</a></th></tr>
+   <tr><th colspan="5"><hr></th></tr>
+<tr><td valign="top"><img src="/icons/back.gif" alt="[PARENTDIR]"></td><td><a href="/Archive/Distributions/Research/">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/unknown.gif" alt="[   ]"></td><td><a href="filelist">filelist</a></td><td align="right">1989-11-21 20:01  </td><td align="right">568 </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f0.gz">f0.gz</a></td><td align="right">1989-11-21 20:55  </td><td align="right">4.6K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f1.gz">f1.gz</a></td><td align="right">1989-11-21 20:55  </td><td align="right">4.0K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f2.gz">f2.gz</a></td><td align="right">1989-11-21 20:55  </td><td align="right">366 </td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f3.gz">f3.gz</a></td><td align="right">1989-11-21 20:55  </td><td align="right">6.4K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f4.gz">f4.gz</a></td><td align="right">1989-11-21 20:55  </td><td align="right">6.2K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f5.gz">f5.gz</a></td><td align="right">1989-11-21 20:56  </td><td align="right">854K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="f6.gz">f6.gz</a></td><td align="right">1989-11-21 20:59  </td><td align="right">2.7M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/compressed.gif" alt="[   ]"></td><td><a href="v7.tap.gz">v7.tap.gz</a></td><td align="right">2016-01-12 08:50  </td><td align="right">3.5M</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="old_mktape.pl">old_mktape.pl</a></td><td align="right">2016-01-12 08:51  </td><td align="right">1.1K</td><td>&nbsp;</td></tr>
+<tr><td valign="top"><img src="/icons/text.gif" alt="[TXT]"></td><td><a href="mktape.pl">mktape.pl</a></td><td align="right">2017-12-18 11:06  </td><td align="right">1.2K</td><td>&nbsp;</td></tr>
+   <tr><th colspan="5"><hr></th></tr>
+</table>
+<address>Apache/2.4.29 (Ubuntu) Server at www.tuhs.org Port 443</address>
+</body></html>

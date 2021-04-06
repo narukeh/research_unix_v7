@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html class="client-js" dir="ltr" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Installing v7 on SIMH - Computer History Wiki</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Installing_v7_on_SIMH","wgTitle":"Installing v7 on SIMH","wgCurRevisionId":22491,"wgRevisionId":22491,"wgArticleId":1304,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["SIMH Tutorials"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Installing_v7_on_SIMH","wgRelevantArticleId":1304,"wgRequestId":"2f73d450ce5dc906e082381e","wgIsProbablyEditable":false,"wgRelevantPageIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","mediawiki.skinning.content.externallinks":"ready","skins.monobook.styles":"ready"});mw.loader.implement("user.options@0bhc5ha",function($,jQuery,require,module){mw.user.options.set([]);});mw.loader.implement("user.tokens@031krj1",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/
+
+});mw.loader.load(["site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.toc","mediawiki.searchSuggest"]);});</script>
+<link rel="stylesheet" href="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/load.css">
+<script async="" src="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/load_002.php"></script>
+<!--[if IE 6]><link rel="stylesheet" href="/w/skins/MonoBook/IE60Fixes.css?303" media="screen"/><![endif]--><!--[if IE 7]><link rel="stylesheet" href="/w/skins/MonoBook/IE70Fixes.css?303" media="screen"/><![endif]-->
+<style>
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:0;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:#fff;cursor:pointer;border:solid 1px #aaa;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:#fff;cursor:pointer;border:solid 1px #aaa;padding:0;margin:0}.suggestions-result{color:#000;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4c59a6;color:#fff}.suggestions-special .special-label{color:#808080;text-align:left}.suggestions-special .special-query{color:#000;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:#c0c0c0}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:#fff}.highlight{font-weight:bold}
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	#toc.tochidden,.toc.tochidden,.toctoggle{display:none}}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:#000;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:#fff}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/load_002.css">
+<meta name="generator" content="MediaWiki 1.30.0">
+<link rel="shortcut icon" href="https://gunkies.org/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://gunkies.org/w/opensearch_desc.php" title="Computer History Wiki (en)">
+<link rel="EditURI" type="application/rsd+xml" href="https://gunkies.org/w/api.php?action=rsd">
+<link rel="license" href="http://www.gnu.org/copyleft/fdl.html">
+<link rel="alternate" type="application/atom+xml" title="Computer History Wiki Atom feed" href="https://gunkies.org/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<!--[if lt IE 9]><script src="/resources/lib/html5shiv/html5shiv.min.js"></script><![endif]-->
+<script src="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/load.php"></script></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Installing_v7_on_SIMH rootpage-Installing_v7_on_SIMH skin-monobook action-view"><div id="globalWrapper">
+		<div id="column-content">
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				
+				<div class="mw-indicators mw-body-content">
+</div>
+				<h1 id="firstHeading" class="firstHeading" lang="en">Installing v7 on SIMH</h1>
+				
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub">From Computer History Wiki</div>
+					<div id="contentSub"></div>
+										<div id="jump-to-nav" class="mw-jump">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+
+					<!-- start content -->
+					<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="en"><div class="mw-parser-output"><p>This is the procedure I'm using to install <a href="https://gunkies.org/wiki/Unix_Seventh_Edition" title="Unix Seventh Edition">Research Unix v7</a> on <a href="https://gunkies.org/wiki/SIMH" title="SIMH">SIMH</a>'s <a href="https://gunkies.org/wiki/PDP-11" title="PDP-11">PDP-11</a> emulator.
+</p><p>I'm using the files from <a href="https://gunkies.org/wiki/TUHS" class="mw-redirect" title="TUHS">TUHS</a> "/Archive/Distributions/Research/Keith_Bostic_v7/" directory.  I've also uploaded the resulting tape to <a rel="nofollow" class="external text" href="https://sourceforge.net/projects/bsd42/files/Install%20tapes/Research%20Unix/Unix-v7-Keith-Bostic.tap.bz2/download">here</a>.
+</p><p>If you are going to build the tape then you'll need the <a href="https://gunkies.org/wiki/Mkdisttap.pl#Research_Unix_v7" title="Mkdisttap.pl">mkdisttap.pl</a> script to output a v7.tap file.
+</p><p>NOTE: Comments at the end of a line of the form:
+</p>
+<pre>[## Comment]
+</pre>
+<p>are just to tell you what to do when there is ambiguity; please do not type them in literally!
+</p>
+<div id="toc" class="toc"><div class="toctitle"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a role="button" tabindex="0" class="togglelink">hide</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Tape_Install"><span class="tocnumber">1</span> <span class="toctext">Tape Install</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#tapei.ini"><span class="tocnumber">1.1</span> <span class="toctext">tapei.ini</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#installation"><span class="tocnumber">1.2</span> <span class="toctext">installation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Normal_boot"><span class="tocnumber">2</span> <span class="toctext">Normal boot</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#nboot.ini"><span class="tocnumber">2.1</span> <span class="toctext">nboot.ini</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#Additional_Information"><span class="tocnumber">3</span> <span class="toctext">Additional Information</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Tape_Install">Tape Install</span></h2>
+<h3><span class="mw-headline" id="tapei.ini">tapei.ini</span></h3>
+<pre>cat &gt; tapei.ini &lt;&lt;EOF
+set cpu 11/45
+set cpu idle
+set rp0 rp06
+att rp0 rp06-0.disk
+att tm0 v7.tap
+boot tm0
+EOF
+boot tm0
+</pre>
+<p>with the config in hand, then let's install.
+</p>
+<h3><span class="mw-headline" id="installation">installation</span></h3>
+<pre>pdp11 tapei.ini 
+
+PDP-11 simulator V3.8-1
+Disabling XQ
+RP: creating new file
+Overwrite last track? [N]	[## Just hit enter]
+Boot
+:
+</pre>
+<p>I just hit enter to the "Overwrite last track" question, then the 
+bootloader will appear.  We are going to load the 3rd program on the 
+tape, mkfs and format the 'a' partition.
+</p>
+<pre>Boot
+: tm(0,3)
+file sys size: 5000
+file system: hp(0,0)
+isize = 1600
+m/n = 3 500
+Exit called
+Boot
+:
+</pre>
+<p>The block size comes out of pre-compiled disk sizes in the kernel.  
+Unix back then wasn't as dynamic as what we like in these modern 
+times...  
+</p>
+<pre>Boot
+: tm(0,4)
+Tape? tm(0,5)
+Disk? hp(0,0)
+Last chance before scribbling on disk.	[## Just hit enter]
+End of tape
+Boot
+:
+</pre>
+<p>Once the formatting is complete, then it'll drop back to the 
+bootloader, and we are going to load the 4th program which is the 
+restore program, and we'll restore the root partition.
+</p><p>Now we can boot up UNIX from the hard disk, and setup the OS.  
+The console driver echoes everything in upper case letters, however all 
+command are entered in lowercase. We'll set stty to lowercase and speed 
+up carriage returns and linefeeds.
+</p>
+<pre>Boot
+: hp(0,0)hptmunix
+mem = 177344
+# STTY -LCASE NL0 CR0
+#
+</pre>
+<p>Copy the kernel to unix and remove the extra versions.
+</p>
+<pre># mv hptmunix unix
+# rm hp*ix
+# rm rp*ix
+# ls *ix
+unix
+#
+</pre>
+<p>Create the RP06 devices in /dev.
+</p>
+<pre># cd /dev
+# make rp06
+/etc/mknod rp0 b 6 0
+/etc/mknod swap b 6 1
+/etc/mknod rp3 b 6 7
+/etc/mknod rrp0 c 14 0
+/etc/mknod rrp3 c 14 7
+chmod go-w rp0 swap rp3 rrp0 rrp3
+#
+</pre>
+<p>Create the TU10 devices in /dev.
+</p>
+<pre># make tm
+/etc/mknod mt0 b 3 0
+/etc/mknod rmt0 c 12 0
+/etc/mknod nrmt0 c 12 128
+chmod go+w mt0 rmt0 nrmt0
+#
+</pre>
+<p>Create an empty filesystem on the RP06 and check it.
+</p>
+<pre># cd /
+# /etc/mkfs /dev/rp3 322278
+isize = 65496
+m/n = 3 500
+# icheck /dev/rp3
+/dev/rp3:
+files      2 (r=1,d=1,b=0,c=0)
+used       1 (i=0,ii=0,iii=0,d=1)
+free  314088
+missing    0
+# 
+</pre>
+<p>Fastforward the tape and restore the /usr filesystem to the RP06.
+</p>
+<pre># dd if=/dev/r#nrmt0 of=/dev/null bs=20b files=6
+202+80 records in
+202+75 records out
+# restor rf /dev/rmt0 /dev/rp3
+Last chance before scribbling on /dev/rp3.	[## Just hit enter]
+End of tape
+#
+</pre>
+<p>Mount /usr, copy the bootblock to the RP06, sync and exit the sim.
+</p>
+<pre># /etc/mount /dev/rp3 /usr
+# dd if=/usr/mdec/hpuboot of=/dev/rp0 count=1
+0+1 records in
+0+1 records out
+# sync
+# sync
+# sync
+# sync
+#		                   [## Type CTRL-E (^E) here]
+Simulation stopped, PC: 002306 (MOV (SP)+,177776)
+sim&gt; q
+Goodbye
+</pre>
+<h2><span class="mw-headline" id="Normal_boot">Normal boot</span></h2>
+<p>Create a normal boot ini file for booting directly from the RP06. 
+Note that SIMH will display Disabling XQ and wait for you to type boot 
+to start the actual boot process on the RP06.
+</p>
+<h3><span class="mw-headline" id="nboot.ini">nboot.ini</span></h3>
+<pre>echo
+echo After Disabling XQ is displayed type boot
+echo and at the&nbsp;: prompt type hp(0,0)unix
+echo
+set cpu 11/70
+set cpu 2M
+set cpu idle
+set rp0 rp06
+att rp0 rp06-0.disk
+boot rp0
+</pre>
+<p>And let's boot up!
+</p>
+<pre>pdp11 nboot.ini 
+
+PDP-11 simulator V3.8-1
+
+After Disabling XQ is displayed type boot
+and at the&nbsp;: prompt type hp(0,0)unix
+
+Disabling XQ
+boot	                           [## Type boot here to get the actual boot prompt]
+Boot
+: hp(0,0)unix
+mem = 2020544
+#		                   [## Type CTRL-D (^D) here to enter multi-user mode]
+
+RESTRICTED RIGHTS: USE, DUPLICATION, OR DISCLOSURE
+IS SUBJECT TO RESTRICTIONS STATED IN YOUR CONTRACT WITH
+WESTERN ELECTRIC COMPANY, INC.
+WED DEC 31 19:03:27 EST 1969
+
+login: root
+Password:
+You have mail.
+#		                   [## Type CTRL-E (^E) here]
+
+Simulation stopped, PC: 002306 (MOV (SP)+,177776)
+sim&gt; q
+Goodbye
+</pre>
+<p>The default root password is 'root'.
+</p>
+<h2><span class="mw-headline" id="Additional_Information">Additional Information</span></h2>
+<p>A longer tutorial describing the installation and configuration process in additional detail is available online <a rel="nofollow" class="external text" href="https://decuser.blogspot.com/2015/12/installing-and-using-research-unix.html">here</a> and as a printable PDF <a rel="nofollow" class="external text" href="https://drive.google.com/file/d/1Qqg41b2On-VpP9qjpXAEi8hV4RurgC92/view?usp=sharing">here</a>.
+ As of November, 4, 2017, version 1.6 of the tutorial covers the basic 
+installation from tape to disk, booting from the disk, reconfiguring the
+ system, rebuilding the kernel, logging in as root, and as dmr, sending 
+and reading system mail, and enabling the V7 instance and SimH to allow 
+multiple sessions from the host machine to the instance via Telnet.
+</p><p>If you wish to use the backspace key when your terminal sends ^? 
+(DEL) and Ctrl-C as interrupt character during login and everywhere 
+else, apply <a rel="nofollow" class="external text" href="https://vpsland.superglobalmegacorp.com/backspace.diff">this patch</a> to the kernel and rebuild the system.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li> <a href="https://gunkies.org/wiki/Setting_Up_Unix_-_Seventh_Edition" title="Setting Up Unix - Seventh Edition">Setting Up Unix - Seventh Edition</a></li>
+<li> <a href="https://gunkies.org/wiki/Installing_Unix_Seventh_Edition" title="Installing Unix Seventh Edition">Installing Unix Seventh Edition</a></li></ul>
+
+<!-- 
+NewPP limit report
+Cached time: 20210405171627
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.008 seconds
+Real time usage: 0.009 seconds
+Preprocessor visited node count: 153/1000000
+Preprocessor generated node count: 312/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+</div>
+<!-- Saved in parser cache with key mediawiki-wiki_:pcache:idhash:1304-0!canonical and timestamp 20210405171627 and revision id 22491
+ -->
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;oldid=22491">https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;oldid=22491</a>"</div>
+					<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="https://gunkies.org/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="https://gunkies.org/wiki/Category:SIMH_Tutorials" title="Category:SIMH Tutorials">SIMH Tutorials</a></li></ul></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+			</div>
+					</div>
+		<div id="column-one">
+			<h2>Navigation menu</h2>
+					<div id="p-cactions" class="portlet" role="navigation">
+			<h3>Views</h3>
+
+			<div class="pBody">
+				<ul>
+				<li id="ca-nstab-main" class="selected"><a href="https://gunkies.org/wiki/Installing_v7_on_SIMH" title="View the content page [Alt+Shift+c]" accesskey="c">Page</a></li>
+				<li id="ca-talk" class="new"><a href="https://gunkies.org/w/index.php?title=Talk:Installing_v7_on_SIMH&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page [Alt+Shift+t]" accesskey="t">Discussion</a></li>
+				<li id="ca-viewsource"><a href="https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;action=edit" title="This page is protected.
+You can view its source [Alt+Shift+e]" accesskey="e">View source</a></li>
+				<li id="ca-history"><a href="https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;action=history" title="Past revisions of this page [Alt+Shift+h]" accesskey="h">History</a></li>
+				</ul>
+							</div>
+		</div>
+				<div class="portlet" id="p-personal" role="navigation">
+				<h3>Personal tools</h3>
+
+				<div class="pBody">
+					<ul>
+													<li id="pt-login"><a href="https://gunkies.org/w/index.php?title=Special:UserLogin&amp;returnto=Installing+v7+on+SIMH" title="You are encouraged to log in; however, it is not mandatory [Alt+Shift+o]" accesskey="o">Log in</a></li>
+											</ul>
+				</div>
+			</div>
+			<div class="portlet" id="p-logo" role="banner">
+				<a href="https://gunkies.org/wiki/Main_Page" class="mw-wiki-logo" title="Visit the main page"></a>
+			</div>
+				<div class="generated-sidebar portlet" id="p-navigation" role="navigation">
+		<h3>Navigation</h3>
+		<div class="pBody">
+							<ul>
+											<li id="n-mainpage-description"><a href="https://gunkies.org/wiki/Main_Page" title="Visit the main page [Alt+Shift+z]" accesskey="z">Main page</a></li>
+											<li id="n-recentchanges"><a href="https://gunkies.org/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [Alt+Shift+r]" accesskey="r">Recent changes</a></li>
+											<li id="n-randompage"><a href="https://gunkies.org/wiki/Special:Random" title="Load a random page [Alt+Shift+x]" accesskey="x">Random page</a></li>
+											<li id="n-help"><a href="https://gunkies.org/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li>
+									</ul>
+					</div>
+		</div>
+			<div id="p-search" class="portlet" role="search">
+			<h3><label for="searchInput">Search</label></h3>
+
+			<div id="searchBody" class="pBody">
+				<form action="/w/index.php" id="searchform">
+					<input type="hidden" name="title" value="Special:Search">
+					<input type="search" name="search" placeholder="Search Computer History Wiki" title="Search Computer History Wiki [Alt+Shift+f]" accesskey="f" id="searchInput" autocomplete="off">
+					<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchGoButton" class="searchButton">&nbsp;
+						<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton">
+				</form>
+
+							</div>
+		</div>
+			<div class="portlet" id="p-tb" role="navigation">
+			<h3>Tools</h3>
+
+			<div class="pBody">
+				<ul>
+											<li id="t-whatlinkshere"><a href="https://gunkies.org/wiki/Special:WhatLinksHere/Installing_v7_on_SIMH" title="A list of all wiki pages that link here [Alt+Shift+j]" accesskey="j">What links here</a></li>
+											<li id="t-recentchangeslinked"><a href="https://gunkies.org/wiki/Special:RecentChangesLinked/Installing_v7_on_SIMH" rel="nofollow" title="Recent changes in pages linked from this page [Alt+Shift+k]" accesskey="k">Related changes</a></li>
+											<li id="t-specialpages"><a href="https://gunkies.org/wiki/Special:SpecialPages" title="A list of all special pages [Alt+Shift+q]" accesskey="q">Special pages</a></li>
+											<li id="t-print"><a href="https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;printable=yes" rel="alternate" title="Printable version of this page [Alt+Shift+p]" accesskey="p">Printable version</a></li>
+											<li id="t-permalink"><a href="https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;oldid=22491" title="Permanent link to this revision of the page">Permanent link</a></li>
+											<li id="t-info"><a href="https://gunkies.org/w/index.php?title=Installing_v7_on_SIMH&amp;action=info" title="More information about this page">Page information</a></li>
+									</ul>
+							</div>
+		</div>
+			</div><!-- end of the left (by default at least) column -->
+		<div class="visualClear"></div>
+					<div id="footer" role="contentinfo">
+						<div id="f-copyrightico">
+									<a href="http://www.gnu.org/copyleft/fdl.html"><img src="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/gnu-fdl.png" alt="GNU Free Documentation License 1.2" width="88" height="31"></a>
+							</div>
+					<div id="f-poweredbyico">
+									<a href="https://www.mediawiki.org/"><img src="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/poweredby_mediawiki_132x47.png 1.5x, Installing%20v7%20on%20SIMH%20-%20Computer%20History%20Wiki_files/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>
+							</div>
+					<ul id="f-list">
+									<li id="lastmod"> This page was last edited on 22 July 2020, at 01:10.</li>
+									<li id="copyright">Content is available under <a class="external" rel="nofollow" href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License 1.2</a> unless otherwise noted.</li>
+									<li id="privacy"><a href="https://gunkies.org/wiki/Computer_History_Wiki:Privacy_policy" title="Computer History Wiki:Privacy policy">Privacy policy</a></li>
+									<li id="about"><a href="https://gunkies.org/wiki/Computer_History_Wiki:About" title="Computer History Wiki:About">About Computer History Wiki</a></li>
+									<li id="disclaimer"><a href="https://gunkies.org/wiki/Computer_History_Wiki:General_disclaimer" title="Computer History Wiki:General disclaimer">Disclaimers</a></li>
+							</ul>
+		</div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.008","walltime":"0.009","ppvisitednodes":{"value":153,"limit":1000000},"ppgeneratednodes":{"value":312,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20210405171627","ttl":86400,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":34});});</script>
+<div style="display: none; font-size: 11.4617px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>

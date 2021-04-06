@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://hekuran.ga/cssjs/sp.css" type="text/css">
+  <title>Installing v7 on SIMH - Computer History Wiki</title>
+</head>
+<h1>Installing v7 on SIMH - Computer History Wiki</h1>
+
+<hr>
+<div class="page" id="readability-page-1"><div dir="ltr" lang="en" id="mw-content-text"><p>This is the procedure I'm using to install <a title="Unix Seventh Edition" href="https://gunkies.org/wiki/Unix_Seventh_Edition">Research Unix v7</a> on <a title="SIMH" href="https://gunkies.org/wiki/SIMH">SIMH</a>'s <a title="PDP-11" href="https://gunkies.org/wiki/PDP-11">PDP-11</a> emulator.
+</p><p>I'm using the files from <a title="TUHS" href="https://gunkies.org/wiki/TUHS">TUHS</a> "/Archive/Distributions/Research/Keith_Bostic_v7/" directory.  I've also uploaded the resulting tape to <a href="https://sourceforge.net/projects/bsd42/files/Install%20tapes/Research%20Unix/Unix-v7-Keith-Bostic.tap.bz2/download" rel="nofollow">here</a>.
+</p><p>If you are going to build the tape then you'll need the <a title="Mkdisttap.pl" href="https://gunkies.org/wiki/Mkdisttap.pl#Research_Unix_v7">mkdisttap.pl</a> script to output a v7.tap file.
+</p><p>NOTE: Comments at the end of a line of the form:
+</p>
+<pre>[## Comment]
+</pre>
+<p>are just to tell you what to do when there is ambiguity; please do not type them in literally!
+</p>
+<div id="toc"><p></p><h2>Contents</h2><p></p>
+<ul>
+<li><a href="#Tape_Install"><span>1</span> <span>Tape Install</span></a>
+<ul>
+<li><a href="#tapei.ini"><span>1.1</span> <span>tapei.ini</span></a></li>
+<li><a href="#installation"><span>1.2</span> <span>installation</span></a></li>
+</ul>
+</li>
+<li><a href="#Normal_boot"><span>2</span> <span>Normal boot</span></a>
+<ul>
+<li><a href="#nboot.ini"><span>2.1</span> <span>nboot.ini</span></a></li>
+</ul>
+</li>
+<li><a href="#Additional_Information"><span>3</span> <span>Additional Information</span></a></li>
+<li><a href="#See_also"><span>4</span> <span>See also</span></a></li>
+</ul>
+</div>
+
+<h2><span id="Tape_Install">Tape Install</span></h2>
+<h3><span id="tapei.ini">tapei.ini</span></h3>
+<pre>cat &gt; tapei.ini &lt;&lt;EOF
+set cpu 11/45
+set cpu idle
+set rp0 rp06
+att rp0 rp06-0.disk
+att tm0 v7.tap
+boot tm0
+EOF
+boot tm0
+</pre>
+<p>with the config in hand, then let's install.
+</p>
+<h3><span id="installation">installation</span></h3>
+<pre>pdp11 tapei.ini
+
+PDP-11 simulator V3.8-1
+Disabling XQ
+RP: creating new file
+Overwrite last track? [N]	[## Just hit enter]
+Boot
+:
+</pre>
+<p>I just hit enter to the "Overwrite last track" question, then the bootloader will appear.  We are going to load the 3rd program on the tape, mkfs and format the 'a' partition.
+</p>
+<pre>Boot
+: tm(0,3)
+file sys size: 5000
+file system: hp(0,0)
+isize = 1600
+m/n = 3 500
+Exit called
+Boot
+:
+</pre>
+<p>The block size comes out of pre-compiled disk sizes in the kernel.  Unix back then wasn't as dynamic as what we like in these modern times...
+</p>
+<pre>Boot
+: tm(0,4)
+Tape? tm(0,5)
+Disk? hp(0,0)
+Last chance before scribbling on disk.	[## Just hit enter]
+End of tape
+Boot
+:
+</pre>
+<p>Once the formatting is complete, then it'll drop back to the bootloader, and we are going to load the 4th program which is the restore program, and we'll restore the root partition.
+</p><p>Now we can boot up UNIX from the hard disk, and setup the OS.  The console driver echoes everything in upper case letters, however all command are entered in lowercase. We'll set stty to lowercase and speed up carriage returns and linefeeds.
+</p>
+<pre>Boot
+: hp(0,0)hptmunix
+mem = 177344
+# STTY -LCASE NL0 CR0
+#
+</pre>
+<p>Copy the kernel to unix and remove the extra versions.
+</p>
+<pre># mv hptmunix unix
+# rm hp*ix
+# rm rp*ix
+# ls *ix
+unix
+#
+</pre>
+<p>Create the RP06 devices in /dev.
+</p>
+<pre># cd /dev
+# make rp06
+/etc/mknod rp0 b 6 0
+/etc/mknod swap b 6 1
+/etc/mknod rp3 b 6 7
+/etc/mknod rrp0 c 14 0
+/etc/mknod rrp3 c 14 7
+chmod go-w rp0 swap rp3 rrp0 rrp3
+#
+</pre>
+<p>Create the TU10 devices in /dev.
+</p>
+<pre># make tm
+/etc/mknod mt0 b 3 0
+/etc/mknod rmt0 c 12 0
+/etc/mknod nrmt0 c 12 128
+chmod go+w mt0 rmt0 nrmt0
+#
+</pre>
+<p>Create an empty filesystem on the RP06 and check it.
+</p>
+<pre># cd /
+# /etc/mkfs /dev/rp3 322278
+isize = 65496
+m/n = 3 500
+# icheck /dev/rp3
+/dev/rp3:
+files      2 (r=1,d=1,b=0,c=0)
+used       1 (i=0,ii=0,iii=0,d=1)
+free  314088
+missing    0
+#
+</pre>
+<p>Fastforward the tape and restore the /usr filesystem to the RP06.
+</p>
+<pre># dd if=/dev/r#nrmt0 of=/dev/null bs=20b files=6
+202+80 records in
+202+75 records out
+# restor rf /dev/rmt0 /dev/rp3
+Last chance before scribbling on /dev/rp3.	[## Just hit enter]
+End of tape
+#
+</pre>
+<p>Mount /usr, copy the bootblock to the RP06, sync and exit the sim.
+</p>
+<pre># /etc/mount /dev/rp3 /usr
+# dd if=/usr/mdec/hpuboot of=/dev/rp0 count=1
+0+1 records in
+0+1 records out
+# sync
+# sync
+# sync
+# sync
+#		                   [## Type CTRL-E (^E) here]
+Simulation stopped, PC: 002306 (MOV (SP)+,177776)
+sim&gt; q
+Goodbye
+</pre>
+<h2><span id="Normal_boot">Normal boot</span></h2>
+<p>Create a normal boot ini file for booting directly from the RP06. Note that SIMH will display Disabling XQ and wait for you to type boot to start the actual boot process on the RP06.
+</p>
+<h3><span id="nboot.ini">nboot.ini</span></h3>
+<pre>echo
+echo After Disabling XQ is displayed type boot
+echo and at the&nbsp;: prompt type hp(0,0)unix
+echo
+set cpu 11/70
+set cpu 2M
+set cpu idle
+set rp0 rp06
+att rp0 rp06-0.disk
+boot rp0
+</pre>
+<p>And let's boot up!
+</p>
+<pre>pdp11 nboot.ini
+
+PDP-11 simulator V3.8-1
+
+After Disabling XQ is displayed type boot
+and at the&nbsp;: prompt type hp(0,0)unix
+
+Disabling XQ
+boot	                           [## Type boot here to get the actual boot prompt]
+Boot
+: hp(0,0)unix
+mem = 2020544
+#		                   [## Type CTRL-D (^D) here to enter multi-user mode]
+
+RESTRICTED RIGHTS: USE, DUPLICATION, OR DISCLOSURE
+IS SUBJECT TO RESTRICTIONS STATED IN YOUR CONTRACT WITH
+WESTERN ELECTRIC COMPANY, INC.
+WED DEC 31 19:03:27 EST 1969
+
+login: root
+Password:
+You have mail.
+#		                   [## Type CTRL-E (^E) here]
+
+Simulation stopped, PC: 002306 (MOV (SP)+,177776)
+sim&gt; q
+Goodbye
+</pre>
+<p>The default root password is 'root'.
+</p>
+<h2><span id="Additional_Information">Additional Information</span></h2>
+<p>A longer tutorial describing the installation and configuration process in additional detail is available online <a href="https://decuser.blogspot.com/2015/12/installing-and-using-research-unix.html" rel="nofollow">here</a> and as a printable PDF <a href="https://drive.google.com/file/d/1Qqg41b2On-VpP9qjpXAEi8hV4RurgC92/view?usp=sharing" rel="nofollow">here</a>. As of November, 4, 2017, version 1.6 of the tutorial covers the basic installation from tape to disk, booting from the disk, reconfiguring the system, rebuilding the kernel, logging in as root, and as dmr, sending and reading system mail, and enabling the V7 instance and SimH to allow multiple sessions from the host machine to the instance via Telnet.
+</p><p>If you wish to use the backspace key when your terminal sends ^? (DEL) and Ctrl-C as interrupt character during login and everywhere else, apply <a href="https://vpsland.superglobalmegacorp.com/backspace.diff" rel="nofollow">this patch</a> to the kernel and rebuild the system.
+</p>
+<h2><span id="See_also">See also</span></h2>
+<ul><li> <a title="Setting Up Unix - Seventh Edition" href="https://gunkies.org/wiki/Setting_Up_Unix_-_Seventh_Edition">Setting Up Unix - Seventh Edition</a></li>
+<li> <a title="Installing Unix Seventh Edition" href="https://gunkies.org/wiki/Installing_Unix_Seventh_Edition">Installing Unix Seventh Edition</a></li></ul>
+
+<small><small><small><a href="https://gunkies.org/wiki/Installing_v7_on_SIMH"><b>Original webpage</b></a></small></small></small>
+</br>
+<small><small><small><a href="gunkies.org/Installing v7 on SIMH - Computer History Wiki.html"><b>Original archived webpage</b></a></small></small></small>
+
+
+</div></div>
+<body>
+
+</body></html>
