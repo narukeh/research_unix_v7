@@ -1,5 +1,11 @@
 # Research Unix Verion 7
 
+### Why?
+
+This is useful when you read ["The Unix Programming Environment"](https://en.wikipedia.org/wiki/The_Unix_Programming_Environment). This is what they actually used.
+
+----
+
 This is the result of following the gunkies.org wiki.
 
 Everything is ready. I did it so you dont have to. I have installed Research Unix Verion 7 and **NOTHIG** else. So you have a pure system.
