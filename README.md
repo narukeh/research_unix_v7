@@ -42,4 +42,4 @@ Read the gunkies.org wiki [official wiki-site](https://gunkies.org/wiki/Installi
 >
 >wait to prompt, then type `hp(0,0)unix`
 >
->if root has a password, its password.
+>if root has a password, its `password`.
